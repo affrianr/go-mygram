@@ -11,7 +11,7 @@ type Photo struct {
 	PhotoUrl  string `json:"photo_url" gorm:"not null"`
 	UserID    uint   `json:"user_id" gorm:"not null"`
 	User      User
-	CreatedAt time.Time `json:"created_at" gorm:"default:CURRENT_TIMESTAMP()`
-	UpdatedAt time.Time `json:"updated_at" gorm:"default:CURRENT_TIMESTAMP()`
+	CreatedAt time.Time `json:"created_at" gorm:"default:CURRENT_TIMESTAMP"`
+	UpdatedAt time.Time `json:"updated_at" gorm:"default:CURRENT_TIMESTAMP"`
 	Comments  []Comment
 }

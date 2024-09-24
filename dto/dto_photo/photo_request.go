@@ -8,6 +8,7 @@ type AddPhotoRequest struct {
 }
 
 type UpdatePhotoRequest struct {
+	ID       uint   `json:"id"`
 	Title    string `json:"title" binding:"required"`
 	Caption  string `json:"caption"`
 	PhotoUrl string `json:"photo_url" binding:"required"`

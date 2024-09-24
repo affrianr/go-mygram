@@ -8,5 +8,6 @@ type UserRegisterResponse struct {
 }
 
 type LoginResponse struct {
+	User  UserRegisterResponse
 	Token string `json:"token"`
 }

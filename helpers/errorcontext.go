@@ -1,4 +1,4 @@
-package errorcontext
+package helpers
 
 import (
 	"fmt"

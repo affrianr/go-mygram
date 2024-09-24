@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"github.com/affrianr/go-mygram/entity"
-	errorcontext "github.com/affrianr/go-mygram/helpers"
 	"gorm.io/gorm"
 )
 
@@ -13,8 +12,9 @@ type UserRepository struct {
 }
 
 type IUserRepository interface {
-	Register(ctx context.Context, req entity.User) (userID string, err errorcontext.ErrorContext)
-	// Login(ctx context.Context, req entity.UserLogin) (userID string, err errorcontext.ErrorContext)
+	Create(ctx context.Context, req entity.User) (userID uint, err error)
+	GetUserByEmail(ctx context.Context, email string) (user entity.User, err error)
+	GetUserByID(ctx context.Context, id uint) (user entity.User, err error)
 }
 
 func InitUserRepository(gormDB *gorm.DB) IUserRepository {

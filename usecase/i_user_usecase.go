@@ -5,7 +5,6 @@ import (
 
 	dto "github.com/affrianr/go-mygram/dto/dto_user"
 	"github.com/affrianr/go-mygram/entity"
-	errorcontext "github.com/affrianr/go-mygram/helpers"
 	userRepo "github.com/affrianr/go-mygram/repository"
 	"gorm.io/gorm"
 )
@@ -22,5 +21,6 @@ func InitUserUsecase(gormDB *gorm.DB, userRepository userRepo.IUserRepository) I
 }
 
 type IUserUsecase interface {
-	StoreUser(ctx context.Context, req dto.UserRegisterRequest) (user entity.User, err errorcontext.ErrorContext)
+	StoreUser(ctx context.Context, req dto.UserRegisterRequest) (user entity.User, err error)
+	Login(ctx context.Context, req dto.UserLoginRequest) (res dto.LoginResponse, err error)
 }

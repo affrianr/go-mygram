@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/affrianr/go-mygram/entity"
-	userEntity "github.com/affrianr/go-mygram/user/entity"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -29,5 +28,5 @@ func ConnectDB() {
 		fmt.Println("Failed to connect to database:", err)
 	}
 
-	DB.AutoMigrate(&userEntity.User{}, &entity.SocialMedia{}, &entity.Photo{}, &entity.Comment{})
+	DB.AutoMigrate(&entity.User{}, &entity.SocialMedia{}, &entity.Photo{}, &entity.Comment{})
 }
