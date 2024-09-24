@@ -10,9 +10,9 @@ func InitSocmedRoutes(Route *gin.Engine, socialMediaHandler *handler.SocialMedia
 
 	socialMedia := Route.Group("/social-media")
 	{
+		socialMedia.Use(middlewares.Authentication())
 		socialMedia.GET("/user/:user_id", socialMediaHandler.GetSocialMedia)
 		socialMedia.GET("/", socialMediaHandler.GetAllSocialMedia)
-		socialMedia.Use(middlewares.Authentication())
 		socialMedia.POST("/", socialMediaHandler.CreateSocialMedia)
 		socialMedia.GET("/:id", socialMediaHandler.GetSocialMediaByID)
 		socialMedia.PUT("/:id", middlewares.UnifiedAuthorization(), socialMediaHandler.UpdateSocialMedia)

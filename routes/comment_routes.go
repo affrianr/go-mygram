@@ -10,9 +10,9 @@ func InitCommentRoutes(Route *gin.Engine, commentHandler *handler.CommentHandler
 
 	comment := Route.Group("/Comments")
 	{
+		comment.Use(middlewares.Authentication())
 		comment.GET("/user/:user_id", commentHandler.GetCommentsByUser)
 		comment.GET("/", commentHandler.GetAllComment)
-		comment.Use(middlewares.Authentication())
 		comment.POST("/", commentHandler.CreateComment)
 		comment.GET("/:id", commentHandler.GetCommentById)
 		comment.PUT("/:id", middlewares.UnifiedAuthorization(), commentHandler.UpdateComment)

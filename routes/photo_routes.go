@@ -10,9 +10,9 @@ func InitPhotoRoutes(Route *gin.Engine, photoHandler *handler.PhotoHandler) *gin
 
 	photo := Route.Group("/photos")
 	{
+		photo.Use(middlewares.Authentication())
 		photo.GET("/user/:user_id", photoHandler.GetPhotosByUser)
 		photo.GET("/", photoHandler.GetAllPhoto)
-		photo.Use(middlewares.Authentication())
 		photo.POST("/", photoHandler.CreatePhoto)
 		photo.GET("/:id", photoHandler.GetPhotoById)
 		photo.PUT("/:id", middlewares.UnifiedAuthorization(), photoHandler.UpdatePhoto)
